@@ -1,3 +1,11 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+}
+
 .pokemon-container {
     text-align: center;
     padding: 16px;
@@ -10,10 +18,12 @@
 
     ion-chip {
         margin: 4px;
+        font-family: 'Ubuntu';
     }
 
     ion-card {
         margin-top: 20px;
         text-align: left;
+        font-family: 'Ubuntu';
     }
 }

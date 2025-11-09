@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar color="primary">
+    <ion-toolbar color="tertiary">
         <ion-buttons slot="start">
             <ion-back-button defaultHref="/"></ion-back-button>
         </ion-buttons>
@@ -11,6 +11,12 @@
     <div class="pokemon-container">
         <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="{{ pokemon.name }}">
         <h2>{{ pokemon.name | titlecase }}</h2>
+
+        <p>
+            <small class="text-tipo">
+                <i>Tipos:</i>
+            </small>
+        </p>
 
         <ion-chip color="secondary" *ngFor="let type of pokemon.types">
             {{ type.type.name | titlecase }}

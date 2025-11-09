@@ -35,3 +35,20 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+// html, body, ion-app {
+//   font-family: 'Roboto', sans-serif !important;
+// }
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('../src/assets/fonts/Ubuntu/Ubuntu-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body, ion-app, ion-content, ion-title, ion-label {
+  font-family: 'Ubuntu', sans-serif !important;
+}

@@ -14,8 +14,6 @@ import { PokemonService } from '../services/pokemon.service';
 export class HomePage implements OnInit {
     pokemons: any[] = [];
     loading = true;
-    limit = 20;
-    offset = 0;
 
     constructor(
         private pokemonService: PokemonService,
@@ -23,7 +21,7 @@ export class HomePage implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.pokemonService.getPokemonsWithDetails(20, 0).subscribe({
+        this.pokemonService.getPokemonsWithDetails(40, 0).subscribe({
             next: (data) => {
                 this.pokemons = data;
                 this.loading = false;
@@ -38,27 +36,4 @@ export class HomePage implements OnInit {
     openDetail(pokemon: any) {
         this.router.navigate(['/pokemon', pokemon.id]);
     }
-
-    // loadPokemons(event?: any) {
-    //     this.loading = true;
-    //     this.ps.getPokemonsWithDetails(this.limit, this.offset).subscribe({
-    //         next: (items) => {
-    //             this.pokemons = [...this.pokemons, ...items];
-    //             this.offset += this.limit;
-    //             this.loading = false;
-    //             if (event) event.target.complete();
-    //         },
-    //         error: (err) => {
-    //             console.error(err);
-    //             this.loading = false;
-    //             if (event) event.target.complete();
-    //         },
-    //     });
-    // }
-
-    // doRefresh(event: any) {
-    //     this.offset = 0;
-    //     this.pokemons = [];
-    //     this.loadPokemons(event);
-    // }
 }
