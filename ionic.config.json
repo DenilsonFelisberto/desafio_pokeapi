@@ -1,0 +1,7 @@
+{
+  "name": "desafio_pokeapi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
