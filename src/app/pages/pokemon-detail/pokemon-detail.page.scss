@@ -1,0 +1,19 @@
+.pokemon-container {
+    text-align: center;
+    padding: 16px;
+
+    img {
+        width: 180px;
+        height: 180px;
+        margin-bottom: 16px;
+    }
+
+    ion-chip {
+        margin: 4px;
+    }
+
+    ion-card {
+        margin-top: 20px;
+        text-align: left;
+    }
+}

@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>Pokédex</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-spinner *ngIf="loading" class="center"></ion-spinner>
+
+    <ion-list *ngIf="!loading">
+        <ion-item *ngFor="let p of pokemons" button (click)="openDetail(p)">
+            <ion-avatar slot="start">
+                <img [src]="p.sprites.front_default" alt="{{ p.name }}">
+            </ion-avatar>
+            <ion-label>
+                {{ p.name | titlecase }}
+            </ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>
