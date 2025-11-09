@@ -1,13 +1,15 @@
 <ion-header>
     <ion-toolbar color="tertiary">
         <ion-title>Pokedex</ion-title>
+        <ion-img src="../../../assets/icon/logo_dex_3.png" slot="end"
+            style="width: 40px; height: 40px; margin-right: 10px;" title="Pokedex"></ion-img>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
     <ion-spinner *ngIf="loading" class="center"></ion-spinner>
 
-    <ion-list *ngIf="!loading">
+    <!-- <ion-list *ngIf="!loading">
         <ion-item *ngFor="let p of pokemons" button (click)="openDetail(p)">
             <ion-avatar slot="start">
                 <img [src]="p.sprites.front_default" alt="{{ p.name }}">
@@ -16,5 +18,23 @@
                 {{ p.name | titlecase }}
             </ion-label>
         </ion-item>
-    </ion-list>
+    </ion-list> -->
+
+    <ion-content>
+        <ion-grid *ngIf="!loading">
+            <ion-row>
+                <ion-col size="6" size-md="4" size-lg="3" *ngFor="let p of pokemons">
+                    <ion-card button (click)="openDetail(p)">
+                        <img [src]="p.sprites.front_default" alt="{{ p.name }}">
+                        <ion-card-content>
+                            <ion-card-title class="ion-text-center">
+                                {{ p.name | titlecase }}
+                            </ion-card-title>
+                        </ion-card-content>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-content>
+
 </ion-content>
