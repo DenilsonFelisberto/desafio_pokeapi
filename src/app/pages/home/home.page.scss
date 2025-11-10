@@ -1,59 +1,93 @@
+.linha-opcoes {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  padding: 0 15px;
+}
+
 .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 100%;
+
+  margin: 15px 0;
 }
 
 .view-selector {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
 
-    input[type="radio"] {
-        display: none;
-        /* Esconde o input */
-    }
+  input[type="radio"] {
+    display: none;
+    /* Esconde o input */
+  }
 
-    label {
-        cursor: pointer;
-        border-radius: 10px;
-        padding: 5px;
-        transition: transform 0.2s ease, background-color 0.2s ease;
-    }
+  label {
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 5px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
 
-    label ion-img {
-        width: 32px;
-        height: 32px;
-    }
+  label ion-img {
+    width: 32px;
+    height: 32px;
+  }
 
-    label.selected {
-        background-color: #FFF;
-        transform: scale(1.1);
-    }
+  label.selected {
+    background-color: #FFF;
+    transform: scale(1.1);
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  gap: 10px;
+
+  .page-info {
+    font-weight: bold;
+    color: var(--ion-color-medium);
+  }
+
+  ion-button {
+    --border-radius: 8px;
+  }
 }
 
 ion-card {
-    text-align: center;
-    border-radius: 12px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-    img {
-        width: 100px;
-        height: 100px;
-        margin: 12px auto 0;
-    }
+  img {
+    width: 100px;
+    height: 100px;
+    margin: 12px auto 0;
+  }
 
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    }
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
 }
 
 ion-card-title {
-    font-size: 1rem;
-    color: var(--ion-color-dark);
+  font-size: 1rem;
+  color: var(--ion-color-dark);
+}
+
+ion-button ion-img {
+  width: 24px;
+  height: 24px;
 }

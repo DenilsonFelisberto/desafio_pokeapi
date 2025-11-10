@@ -1,45 +1,70 @@
 <ion-header>
-    <ion-toolbar color="tertiary">
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="/"></ion-back-button>
-        </ion-buttons>
-        <ion-title>{{ pokemon?.name | titlecase }}</ion-title>
-    </ion-toolbar>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ pokemon?.name | titlecase }}</ion-title>
+
+    <ion-img src="../../../assets/icon/logo_dex_3.png" slot="end" style="width: 40px; height: 40px; margin-right: 10px;"
+      title="Pokedex"></ion-img>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="!loading && pokemon">
-    <div class="pokemon-container">
-        <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="{{ pokemon.name }}">
-        <h2>{{ pokemon.name | titlecase }}</h2>
+  <div class="pokemon-container">
+    <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="{{ pokemon.name }}">
 
-        <p>
-            <small class="text-tipo">
-                <i>Tipos:</i>
-            </small>
-        </p>
-
-        <ion-chip color="secondary" *ngFor="let type of pokemon.types">
-            {{ type.type.name | titlecase }}
-        </ion-chip>
-
-        <ion-card>
-            <ion-card-header>
-                <ion-card-title>Detalhes</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-                <p><b>Peso:</b> {{ pokemon.weight / 10 }} kg</p>
-                <p><b>Altura:</b> {{ pokemon.height / 10 }} m</p>
-                <p><b>Habilidades:</b></p>
-                <ul>
-                    <li *ngFor="let ability of pokemon.abilities">
-                        {{ ability.ability.name | titlecase }}
-                    </li>
-                </ul>
-            </ion-card-content>
-        </ion-card>
+    <div class="name-row">
+      <h2>{{ pokemon.name | titlecase }}</h2>
+      <ion-button fill="clear" (click)="toggleFavorite(pokemon)">
+        <ion-img [src]="
+          isFavorite(pokemon.id)
+            ? '../../../assets/icon/favorito.png'
+            : '../../../assets/icon/favoritar.png'
+          "
+          style="width: 26px; height: 26px"
+          [alt]="isFavorite(pokemon.id) ? 'Pokémon Favoritado' : 'Favoritar Pokémon'"
+          [title]="isFavorite(pokemon.id) ? 'Farorito!' : 'Favoritar?'"
+        ></ion-img>
+      </ion-button>
     </div>
+
+    <p>
+      <small class="text-tipo">
+        <i>Tipos:</i>
+      </small>
+    </p>
+
+    <ion-chip color="secondary" *ngFor="let type of pokemon.types">
+      {{ type.type.name | titlecase }}
+    </ion-chip>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Detalhes</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><b>Posição da Pokedex:</b> #{{ pokemon.id}}</p>
+        <p><b>Peso:</b> {{ pokemon.weight / 10 }} kg</p>
+        <p><b>Altura:</b> {{ pokemon.height / 10 }} m</p>
+        <p><b>Nível de Experiência:</b> {{ pokemon.base_experience }}</p>
+        <p><b>Habilidades:</b></p>
+        <ul>
+          <li *ngFor="let ability of pokemon.abilities">
+            {{ ability.ability.name | titlecase }}
+          </li>
+        </ul>
+        <p><b>Movimentos:</b></p>
+        <ul>
+          <li *ngFor="let moves of pokemon.moves">
+            {{ moves.move.name | titlecase }}
+          </li>
+        </ul>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
 
 <ion-content *ngIf="loading">
-    <ion-spinner class="center"></ion-spinner>
+  <ion-spinner class="center"></ion-spinner>
 </ion-content>

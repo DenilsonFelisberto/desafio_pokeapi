@@ -1,57 +1,90 @@
 <ion-header>
-    <ion-toolbar color="tertiary">
-        <ion-title>Pokedex</ion-title>
-        <ion-img src="../../../assets/icon/logo_dex_3.png" slot="end"
-            style="width: 40px; height: 40px; margin-right: 10px;" title="Pokedex"></ion-img>
-    </ion-toolbar>
+  <ion-toolbar color="tertiary">
+    <ion-title>Pokedex</ion-title>
+    <ion-img src="../../../assets/icon/logo_dex_3.png" slot="end" style="width: 40px; height: 40px; margin-right: 10px;"
+      title="Pokedex"></ion-img>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-    <!-- 🔹 Linha de opções de visualização -->
-    <div class="view-selector">
-        <input type="radio" name="viewMode" value="list" id="list" (change)="changeView('list')"
-            [checked]="viewMode === 'list'" />
-        <label for="list" [class.selected]="viewMode === 'list'" title="Ver em lista">
-            <ion-img src="../../../assets/icon/list-icon.png" alt="icon-list"></ion-img>
-        </label>
+  <div class="linha-opcoes">
 
-        <input type="radio" name="viewMode" value="grid" id="grid" (change)="changeView('grid')"
-            [checked]="viewMode === 'grid'" />
-        <label for="grid" [class.selected]="viewMode === 'grid'" title="Ver em grade">
-            <ion-img src="../../../assets/icon/grid-icon.png" alt="icon-grid"></ion-img>
-        </label>
+    <!-- 🔹 Paginação -->
+    <div class="pagination">
+      <ion-button fill="outline" color="medium" (click)="prevPage()" [disabled]="currentPage === 1">
+        ← Anterior
+      </ion-button>
+
+      <span class="page-info">
+        Página {{ currentPage }} de {{ totalPages }}
+      </span>
+
+      <ion-button fill="outline" color="medium" (click)="nextPage()" [disabled]="currentPage === totalPages">
+        Próxima →
+      </ion-button>
     </div>
 
+    <!-- 🔹 Linha de opções de visualização -->
+    <div class="view-selector">
+      <input type="radio" name="viewMode" value="list" id="list" (change)="changeView('list')"
+        [checked]="viewMode === 'list'" />
+      <label for="list" [class.selected]="viewMode === 'list'" title="Ver em lista">
+        <ion-img src="../../../assets/icon/list-icon.png" alt="icon-list"></ion-img>
+      </label>
 
-    <ion-spinner *ngIf="loading" class="center"></ion-spinner>
+      <input type="radio" name="viewMode" value="grid" id="grid" (change)="changeView('grid')"
+        [checked]="viewMode === 'grid'" />
+      <label for="grid" [class.selected]="viewMode === 'grid'" title="Ver em grade">
+        <ion-img src="../../../assets/icon/grid-icon.png" alt="icon-grid"></ion-img>
+      </label>
+    </div>
+  </div>
 
-    <!-- 🔹 Modo Lista -->
-    <ion-list *ngIf="!loading && viewMode === 'list'">
-        <ion-item *ngFor="let p of pokemons" button (click)="openDetail(p)">
-            <ion-avatar slot="start">
-                <img [src]="p.sprites.front_default" alt="{{ p.name }}">
-            </ion-avatar>
-            <ion-label>
-                {{ p.name | titlecase }}
-            </ion-label>
-        </ion-item>
-    </ion-list>
 
-    <!-- 🔹 Modo Grid -->
-    <ion-grid *ngIf="!loading && viewMode === 'grid'">
-        <ion-row>
-            <ion-col size="6" size-md="4" size-lg="3" *ngFor="let p of pokemons">
-                <ion-card button (click)="openDetail(p)">
-                    <img [src]="p.sprites.front_default" alt="{{ p.name }}">
-                    <ion-card-content>
-                        <ion-card-title class="ion-text-center">
-                            {{ p.name | titlecase }}
-                        </ion-card-title>
-                    </ion-card-content>
-                </ion-card>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+  <ion-spinner *ngIf="loading" class="center"></ion-spinner>
+
+  <!-- 🔹 Modo Lista -->
+  <ion-list *ngIf="!loading && viewMode === 'list'">
+    <ion-item *ngFor="let p of pokemons" button (click)="openDetail(p)">
+      <ion-avatar slot="start">
+        <img [src]="p.sprites.front_default" alt="{{ p.name }}">
+      </ion-avatar>
+      <ion-label>
+        {{ p.name | titlecase }}
+      </ion-label>
+
+      <ion-button fill="clear" slot="end" (click)="toggleFavorite(p); $event.stopPropagation()">
+        <ion-img [src]="isFavorite(p.id) ? '../../../assets/icon/favorito.png' : '../../../assets/icon/favoritar.png'"
+          [alt]="isFavorite(p.id) ? 'Pokémon Favoritado' : 'Favoritar Pokémon'"
+          [title]="isFavorite(p.id) ? 'Farorito!' : 'Favoritar?'">
+        </ion-img>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- 🔹 Modo Grid -->
+  <ion-grid *ngIf="!loading && viewMode === 'grid'">
+    <ion-row>
+      <ion-col size="6" size-md="4" size-lg="3" *ngFor="let p of pokemons">
+        <ion-card button (click)="openDetail(p)">
+          <img [src]="p.sprites.front_default" alt="{{ p.name }}">
+          <ion-card-content>
+            <ion-card-title class="ion-text-center">
+              {{ p.name | titlecase }}
+            </ion-card-title>
+
+            <ion-button fill="clear" slot="end" (click)="toggleFavorite(p); $event.stopPropagation()">
+              <ion-img
+                [src]="isFavorite(p.id) ? '../../../assets/icon/favorito.png' : '../../../assets/icon/favoritar.png'"
+                [alt]="isFavorite(p.id) ? 'Pokémon Favoritado' : 'Favoritar Pokémon'"
+                [title]="isFavorite(p.id) ? 'Farorito!' : 'Favoritar?'">
+              </ion-img>
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
