@@ -57,6 +57,23 @@ Durante o desenvolvimento, busquei seguir boas práticas de organização e clar
 
 ---
 
+### 🧪 Testes de Unidade
+
+Este projeto inclui testes de unidade desenvolvidos com **Jasmine + Karma**, cobrindo os principais fluxos de interação dos componentes `HomePage` e `PokemonDetailPage`.
+
+Os testes verificam:
+- Inicialização e carregamento dos dados da API;
+- Ações de favoritar/desfavoritar;
+- Paginação;
+- Navegação entre rotas.
+
+Para executá-los, utilize:
+```bash
+npm test
+```
+
+---
+
 ## 🧰 Tecnologias e Dependências
 
 - **Ionic 7 / Angular 17**
@@ -66,6 +83,37 @@ Durante o desenvolvimento, busquei seguir boas práticas de organização e clar
 - **Ion Components**
 - **CSS customizado + ícones personalizados**
 - **LocalStorage** (para persistência dos favoritos)
+
+---
+
+## 📸 Capturas de Tela
+
+### 🏠 Página Inicial
+Versão desktop - Lista:
+![Home Desktop](src/assets/screenshots/pagina%20inicial%20-%20lista.png)
+
+Versão desktop - Grade:
+![Home Desktop](src/assets/screenshots/pagina%20inicial%20-%20grade.png)
+
+Versão mobile/responsivo - Lista:
+![Home Mobile](src/assets/screenshots/pagina%20inicial%20-%20lista%20-%20responsivo.png)
+
+Versão mobile/responsivo - Grade:
+![Home Mobile](src/assets/screenshots/pagina%20inicial%20-%20grade%20-%20responsivo.png)
+
+---
+
+### 🔍 Detalhes do Pokémon
+Versão desktop:
+![Detalhes Desktop](src/assets/screenshots/pagina%20de%20detalhes%20do%20pokemon.png)
+
+Versão mobile/responsivo:
+![Detalhes Mobile](src/assets/screenshots/pagina%20de%20detalhes%20do%20pokemon%20-%20responsivo.png)
+
+---
+
+### 🧪 Testes Unitários
+![Testes Unitários](src/assets/screenshots/teste%20unitario.png)
 
 ---
 

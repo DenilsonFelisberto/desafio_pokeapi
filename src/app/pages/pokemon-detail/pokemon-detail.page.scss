@@ -15,8 +15,32 @@
   gap: 8px;
 }
 
+.campo-perfil {
+
+  width: 45%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  padding: 45px 0;
+}
+
+.campo-tipos {
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .pokemon-container {
-  text-align: center;
+  // text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-direction: row;
+
   padding: 16px;
 
   img {
@@ -31,8 +55,36 @@
   }
 
   ion-card {
+    width: 45%;
     margin-top: 20px;
     text-align: left;
     font-family: 'Ubuntu';
   }
 }
+
+/* Tablets */
+@media (max-width: 768px) {
+  .pokemon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    ion-card {
+      width: 90%;
+    }
+  }
+
+  .campo-perfil {
+
+    width: 90%;
+  }
+
+
+}
+
+/* Laptops */
+@media (min-width: 992px) {}
+
+/* Desktops grandes */
+@media (min-width: 1200px) {}

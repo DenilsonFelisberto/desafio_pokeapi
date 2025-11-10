@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="tertiary">
-    <ion-title>Pokedex</ion-title>
+    <ion-title><strong>Pokedex</strong></ion-title>
     <ion-img src="../../../assets/icon/logo_dex_3.png" slot="end" style="width: 40px; height: 40px; margin-right: 10px;"
       title="Pokedex"></ion-img>
   </ion-toolbar>
@@ -51,7 +51,7 @@
         <img [src]="p.sprites.front_default" alt="{{ p.name }}">
       </ion-avatar>
       <ion-label>
-        {{ p.name | titlecase }}
+        #{{ p.id }} - {{ p.name | titlecase }}
       </ion-label>
 
       <ion-button fill="clear" slot="end" (click)="toggleFavorite(p); $event.stopPropagation()">
@@ -71,7 +71,7 @@
           <img [src]="p.sprites.front_default" alt="{{ p.name }}">
           <ion-card-content>
             <ion-card-title class="ion-text-center">
-              {{ p.name | titlecase }}
+              #{{ p.id }} - {{ p.name | titlecase }}
             </ion-card-title>
 
             <ion-button fill="clear" slot="end" (click)="toggleFavorite(p); $event.stopPropagation()">

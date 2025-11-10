@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ pokemon?.name | titlecase }}</ion-title>
+    <ion-title><strong>#{{ pokemon?.id }} - {{ pokemon?.name | titlecase }}</strong></ion-title>
 
     <ion-img src="../../../assets/icon/logo_dex_3.png" slot="end" style="width: 40px; height: 40px; margin-right: 10px;"
       title="Pokedex"></ion-img>
@@ -12,32 +12,37 @@
 
 <ion-content *ngIf="!loading && pokemon">
   <div class="pokemon-container">
-    <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="{{ pokemon.name }}">
 
-    <div class="name-row">
-      <h2>{{ pokemon.name | titlecase }}</h2>
-      <ion-button fill="clear" (click)="toggleFavorite(pokemon)">
-        <ion-img [src]="
-          isFavorite(pokemon.id)
-            ? '../../../assets/icon/favorito.png'
-            : '../../../assets/icon/favoritar.png'
-          "
-          style="width: 26px; height: 26px"
-          [alt]="isFavorite(pokemon.id) ? 'Pokémon Favoritado' : 'Favoritar Pokémon'"
-          [title]="isFavorite(pokemon.id) ? 'Farorito!' : 'Favoritar?'"
-        ></ion-img>
-      </ion-button>
+    <div class="campo-perfil">
+      <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="{{ pokemon.name }}">
+
+      <div class="name-row">
+        <h2>#{{ pokemon.id }} - {{ pokemon.name | titlecase }}</h2>
+        <ion-button fill="clear" (click)="toggleFavorite(pokemon)">
+          <ion-img [src]="
+            isFavorite(pokemon.id)
+              ? '../../../assets/icon/favorito.png'
+              : '../../../assets/icon/favoritar.png'
+            " style="width: 26px; height: 26px"
+            [alt]="isFavorite(pokemon.id) ? 'Pokémon Favoritado' : 'Favoritar Pokémon'"
+            [title]="isFavorite(pokemon.id) ? 'Farorito!' : 'Favoritar?'"></ion-img>
+        </ion-button>
+      </div>
+
+      <p>
+        <small class="text-tipo">
+          <i>Tipos:</i>
+        </small>
+      </p>
+
+      <div class="campo-tipos">
+        <ion-chip color="secondary" *ngFor="let type of pokemon.types">
+          <strong>
+            {{ type.type.name | titlecase }}
+          </strong>
+        </ion-chip>
+      </div>
     </div>
-
-    <p>
-      <small class="text-tipo">
-        <i>Tipos:</i>
-      </small>
-    </p>
-
-    <ion-chip color="secondary" *ngFor="let type of pokemon.types">
-      {{ type.type.name | titlecase }}
-    </ion-chip>
 
     <ion-card>
       <ion-card-header>
