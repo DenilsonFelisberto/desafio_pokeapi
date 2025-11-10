@@ -6,6 +6,36 @@
     width: 100%;
 }
 
+.view-selector {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+
+    input[type="radio"] {
+        display: none;
+        /* Esconde o input */
+    }
+
+    label {
+        cursor: pointer;
+        border-radius: 10px;
+        padding: 5px;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    label ion-img {
+        width: 32px;
+        height: 32px;
+    }
+
+    label.selected {
+        background-color: #FFF;
+        transform: scale(1.1);
+    }
+}
+
 ion-card {
     text-align: center;
     border-radius: 12px;

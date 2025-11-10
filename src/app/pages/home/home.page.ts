@@ -14,6 +14,7 @@ import { PokemonService } from '../services/pokemon.service';
 export class HomePage implements OnInit {
     pokemons: any[] = [];
     loading = true;
+    viewMode: 'list' | 'grid' = 'list'; // 👈 modo padrão: lista
 
     constructor(
         private pokemonService: PokemonService,
@@ -35,5 +36,9 @@ export class HomePage implements OnInit {
 
     openDetail(pokemon: any) {
         this.router.navigate(['/pokemon', pokemon.id]);
+    }
+
+    changeView(mode: 'list' | 'grid') {
+        this.viewMode = mode;
     }
 }
