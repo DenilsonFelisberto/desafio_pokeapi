@@ -42,6 +42,10 @@
           },
           "configurations": {
             "production": {
+              "optimization": {
+                "scripts": true,
+                "styles": false
+              },
               "budgets": [
                 {
                   "type": "initial",
