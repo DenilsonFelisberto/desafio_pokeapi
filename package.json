@@ -1,6 +1,9 @@
 {
   "name": "desafio_pokeapi",
   "version": "0.0.1",
+  "engines": {
+    "node": "22.x"
+  },
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
