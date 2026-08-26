@@ -12,8 +12,12 @@ export class PokemonService {
     return this.http.get<{ results: any[] }>(`${this.base}/pokemon?limit=${limit}&offset=${offset}`);
   }
 
+  // getPokemon(nameOrId: string | number): Observable<any> {
+  //   return this.http.get<{ results: any[] }>(`${this.base}/pokemon/${nameOrId}`);
+  // }
+
   getPokemon(nameOrId: string | number): Observable<any> {
-    return this.http.get<{ results: any[] }>(`${this.base}/pokemon/${nameOrId}`);
+    return this.http.get<any>(`${this.base}/pokemon/${nameOrId}`);
   }
 
   getPokemonsWithDetails(limit = 40, offset = 0): Observable<any[]> {
